@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Case Manager</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-default">
+      <div class="container">
+        <%= link_to "Timeline", "", class: "btn btn-lg btn-success", id: "logo" %>
+        <div class="nav_item">
+          <%= link_to "link1", "", class: "btn btn-default btn-success" %>
+        </div>
+        <div class="nav_item">
+          <%= link_to "link2", "", class: "btn btn-default btn-success" %>
+        </div>
+        <div class="nav_item">
+          <%= link_to "link3", "", class: "btn btn-default btn-success" %>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+      <div class="container">
+        <div class="footer">
+          <p>&copy; Sakhniuk Immigration Law 2018</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
