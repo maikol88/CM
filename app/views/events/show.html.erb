@@ -1,0 +1,32 @@
+<%= render 'shared/page_title', title: @event.title %>
+
+<div class="row">
+  <div class="col-md-10">
+    <%= link_to "Edit EVENT", edit_event_path(@event), class: "btn btn-warning pull-right"%>
+  </div>
+</div>
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+    <p>
+      <strong>User:</strong>
+      <%= @event.user.username %>
+    </p>
+    <p>
+      <strong>Title:</strong>
+      <%= @event.title %>
+    </p>
+
+    <p>
+      <strong>Text:</strong>
+      <%= @event.notes %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <%= @status %>
+    </p>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %>  |
+<%= link_to 'Go Back to Timeline', events_path, class: "btn btn-success"%>

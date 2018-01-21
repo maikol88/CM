@@ -11,7 +11,7 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-default">
       <div class="container">
-        <%= link_to "Timeline", "", class: "btn btn-lg btn-success", id: "logo" %>
+        <%= link_to "Timeline", events_path , class: "btn btn-lg btn-success", id: "logo" %>
         <div class="nav_item">
           <%= link_to "link1", "", class: "btn btn-default btn-success" %>
         </div>
@@ -21,9 +21,14 @@
         <div class="nav_item">
           <%= link_to "link3", "", class: "btn btn-default btn-success" %>
         </div>
+
+        <div class="nav_item">
+          <%= link_to "See all Users", users_path, class: "btn btn-default btn-success" %>
+        </div>
       </div>
     </header>
     <div class="container">
+      <%= render 'layouts/messages'%>
       <%= yield %>
       <div class="container">
         <div class="footer">

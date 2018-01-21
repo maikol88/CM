@@ -1,0 +1,32 @@
+<%= render 'shared/page_title', title: 'All Users' %>
+
+<%= link_to 'New User', new_user_path, class: "btn btn-success center" %>
+<br>
+<br>
+
+
+<% @users.each do |u| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="user_info center">
+        <p>PIC GOES HERE</p>
+        <% if u.default_pic == 1 %>
+          <div class="male"></div>
+        <% elsif u.default_pic == 2 %>
+          <div class="female"></div>
+        <% else %>
+          <p>Something went wrong</p>
+        <% end %>
+        <h5>Name: <%= u.username %></h5>
+      </section>
+    </div>
+
+    <div class="col-lg-8 well">
+      <%= link_to "Edit USER", edit_user_path(u), class: "btn btn-warning pull-right"%>
+      <h4><%= link_to u.username, user_path(u) %></h4>
+      <p><%= u.email %></p>
+      <p><span class="quiet'"><%= time_ago_in_words(u.created_at) %></span></p>
+    </div>
+  </div>
+  <hr/>
+<% end %>

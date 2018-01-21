@@ -1,0 +1,42 @@
+<%
+  def event_status_translator(event)
+     case event
+     when 1
+     "Not Started"
+     when 2
+     "In Progress"
+     when 3
+     "Missing"
+     when 4
+     "Unavailable"
+     when 5
+     "Completed"
+     when 6
+     "Action Needed"
+     else "Something looks wrong"
+     end
+ end %>
+
+<%= render 'shared/page_title', title: "Timeline" %>
+
+<%= link_to 'New Event', new_event_path, class: "btn btn-success" %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Notes</th>
+    <th>Status</th>
+    <th colspan="2"></th>
+  </tr>
+  <% @event.each do |e| %>
+    <tr>
+      <td><%= e.title %></td>
+      <td><%= e.notes %></td>
+      <td><%= event_status_translator(e.status) %></td>
+      <td><%= link_to 'Show', event_path(e) %></td>
+      <td><%= link_to 'Edit', edit_event_path(e) %></td>
+      <td><%= link_to 'Destroy', event_path(e),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

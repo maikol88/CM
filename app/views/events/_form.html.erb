@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+    <%= render 'shared/errors', obj: @event %>
+
+    <%= form_for @event do |e| %>
+    <p>
+      <%= e.label :title %><br>
+      <%= e.text_field :title %>
+    </p>
+
+    <p>
+      <%= e.label :notes %><br>
+      <%= e.text_area :notes %>
+    </p>
+
+    <p>
+      <%= e.label :status %><br>
+      <%= e.select(:status, Event::STATUS_LIST) %>
+    </p>
+    <br>
+
+    <p><%= e.submit( @event.new_record? ? "Save EVENT": "Update EVENT", class: "btn btn-success")  %></p>
+    <% end %>
+    <br>
+  </div>
+</div>
