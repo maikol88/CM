@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'will_paginate', '3.1.5'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'carrierwave', '0.10.0'
 gem 'jquery-rails'
 gem 'mini_magick', '3.8.0'

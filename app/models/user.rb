@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
             length: { minimum: 5, maximum: 100 },
             uniqueness: { case_sensitive: false },
             format: { with: VALID_EMAIL_REGEX }
-
+  default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validate :picture_size
   PIC_LIST = { "Male" => 1, "Female" => 2 }
