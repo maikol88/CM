@@ -9,5 +9,15 @@ class User < ActiveRecord::Base
             length: { minimum: 5, maximum: 100 },
             uniqueness: { case_sensitive: false },
             format: { with: VALID_EMAIL_REGEX }
+
+  mount_uploader :picture, PictureUploader
+  validate :picture_size
   PIC_LIST = { "Male" => 1, "Female" => 2 }
+
+  private
+    def picture_size
+      if picture.size > 10.megabytes
+        errors.add(:picture, "should be less than 10 MB. Current pic size is: #{picture.size}")
+      end
+    end
 end

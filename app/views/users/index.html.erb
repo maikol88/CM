@@ -4,18 +4,22 @@
 <br>
 <br>
 
-
 <% @users.each do |u| %>
   <div class="row">
     <div class="col-md-2">
       <section class="user_info center">
-        <% if u.default_pic == 1 %>
-          <div class="male"></div>
-        <% elsif u.default_pic == 2 %>
-          <div class="female"></div>
+        <% unless u.picture? %>
+          <% if u.default_pic == 1 %>
+            <div class="male"></div>
+          <% elsif u.default_pic == 2 %>
+            <div class="female"></div>
+          <% end %>
         <% else %>
-          <p>Something went wrong</p>
+            <%= link_to user_path(u) do%>
+                <%= image_tag(u.picture.url, class:"pic") if u.picture? %>
+            <% end %>
         <% end %>
+
         <h5>Name: <%= u.username %></h5>
       </section>
     </div>

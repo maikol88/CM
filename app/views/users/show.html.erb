@@ -1,8 +1,4 @@
 <%= render 'shared/page_title', title: @user.username %>
-
-<p>
-  <h1>User : <%=  %></h1>
-</p>
 <div class="row">
   <div class="col-md-12">
     <%= link_to "Edit this USER", edit_user_path(@user), class: "btn btn-warning pull-right"%>
@@ -12,20 +8,21 @@
 </div>
 <div class="row">
   <div class="well col-md-2">
-    <div class="well">
-      <p>PIC GOES HERE</p>
+    <% unless @user.picture? %>
       <% if @user.default_pic == 1 %>
-        <p>Male</p>
+        <div class="male"></div>
       <% elsif @user.default_pic == 2 %>
-        <p>Female</p>
+        <div class="female"></div>
       <% else %>
         <p>Something went wrong</p>
       <% end %>
-    </div>
+    <% else %>
+      <%=image_tag(@user.picture.url, class:"pic-show") if @user.picture? %>
+    <% end %>
   </div>
   <div class="col-md-10">
     <div class="well">
-      <p>Email: <%= @user.email %></p>
+      <p><strong>Email: </strong><%= @user.email %></p>
     </div>
   </div>
 </div>
